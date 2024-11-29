@@ -1,0 +1,21 @@
+# Ignore .mat files
+*.mat
+
+# Ignore .bin files
+*.bin
+
+# Ignore Python cache files
+__pycache__/
+*.pyc
+
+# Ignore Jupyter notebook checkpoints
+.ipynb_checkpoints/
+
+# Ignore virtual environments
+venv/
+
+# Ignore log files
+*.log
+
+# Ignore macOS system files
+.DS_Store
