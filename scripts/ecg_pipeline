@@ -1,0 +1,72 @@
+// ECG Depression Detection Pipeline
+digraph {
+	rankdir=LR size="24,18" splines=false
+	bgcolor=black
+	node [color=white fontcolor=white fontname=Arial fontsize=20 shape=box style=rounded]
+	edge [color=white]
+	subgraph cluster_A {
+		color=white fontcolor=white label="Data Reading" labelfontsize=24 style=rounded
+		A [label="Data Reading"]
+		A1 [label="*.bin" shape=ellipse]
+		A2 [label="*.mat" shape=ellipse]
+		A -> A1
+		A -> A2
+	}
+	subgraph cluster_B {
+		color=white fontcolor=white label=Filtering style=rounded
+		B [label=Filtering]
+		B1 [label="PLI Suppression"]
+		B2 [label="Savitzky-Golay"]
+		B -> B1
+		B -> B2
+	}
+	subgraph cluster_D {
+		color=white fontcolor=white label="Feature Extraction" style=rounded
+		D1 [label="R-wave"]
+		D2 [label=HR]
+		D3 [label=HRV]
+		D4 [label=QT]
+		D5 [label=Freq]
+	}
+	subgraph cluster_H {
+		rankdir=TB
+		color=white fontcolor=white label="Machine Learning Classification" style=rounded
+		H1 [label=KNN]
+		H2 [label="Random Forest"]
+		H3 [label=Adaboost]
+		H4 [label="Logistic Regression"]
+		H5 [label="etc."]
+	}
+	C [label="Baseline Removal
+(Wavelet Transform)"]
+	E [label="Outlier Removal"]
+	subgraph cluster_FGH {
+		style=invis
+		rankdir=TB
+		F [label="Normalization
+(MinMaxScaler)"]
+		G [label="Feature Matrix
+Construction"]
+		F -> G
+	}
+	A1 -> B
+	A2 -> B
+	B1 -> C
+	B2 -> C
+	C -> D1
+	C -> D2
+	C -> D3
+	C -> D4
+	C -> D5
+	D1 -> E
+	D2 -> E
+	D3 -> E
+	D4 -> E
+	D5 -> E
+	E -> F
+	G -> H1
+	G -> H2
+	G -> H3
+	G -> H4
+	G -> H5
+}

@@ -1,6 +1,6 @@
 import scipy.signal
 import numpy as np
-from .wavelet import extract_wavelet_features
+from .qrs import extract_wavelet_features
 
 def extract_qrs_features(signal, sampling_rate=512):
     """

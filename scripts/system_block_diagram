@@ -1,0 +1,33 @@
+// System Block Diagram
+digraph {
+	rankdir=LR
+	A [label="Input Data" shape=box]
+	B [label="Data Exploration" shape=box]
+	C [label="RNN Construction" shape=box]
+	D [label=LSTM shape=box]
+	E [label=Autoencoder shape=box]
+	F [label=Encoder shape=box]
+	G [label=Decoder shape=box]
+	H [label="Model Training" shape=box]
+	I [label="Choosing Threshold" shape=box]
+	J [label="Recurrent Autoencoder" shape=box]
+	K [label="Checking the Accuracy" shape=box]
+	L [label="Normal vs Risky (PVC)" shape=box]
+	M [label="Recorded Comparison" shape=box]
+	N [label=Prediction shape=box]
+	O [label="Abnormal vs Risky (PVC)" shape=box]
+	A -> B
+	B -> C
+	C -> D
+	D -> E
+	E -> F
+	F -> G
+	G -> H
+	H -> I
+	I -> J
+	J -> K
+	K -> L
+	L -> M
+	M -> N
+	N -> O
+}
